@@ -1,0 +1,67 @@
+{
+    "name": "Inputcontroller",
+    "maps": [
+        {
+            "name": "InputController",
+            "id": "e0abeaef-25fa-4d87-b5e2-2ed08270ff3a",
+            "actions": [
+                {
+                    "name": "touchControl",
+                    "type": "Value",
+                    "id": "61ee14d1-0dc7-42fc-b615-36fcdb144031",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4c91ca9e-626f-4f7e-b5e0-0a41ac96f51f",
+                    "path": "<Touchscreen>/touch0/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touchControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "402d2f52-ac84-4053-a34d-aecaa012912e",
+                    "path": "<Touchscreen>/touch1/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touchControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ae203b16-542b-4816-b486-e7456850c63c",
+                    "path": "<Touchscreen>/touch0/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touchControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "78d78af3-8e00-4246-8aa2-5b9a6f2bbc1f",
+                    "path": "<Touchscreen>/touch1/startPosition",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "touchControl",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
