@@ -8,6 +8,19 @@ public class BuildingController : MonoBehaviour
     Inputcontroller MtouchControl;
     public float mTouchDelta;
     // Start is called before the first frame update
+
+    private void OnEnable()
+    {
+        MtouchControl.Enable();
+        MtouchControl.InputController.touchControl.performed += Movement;
+
+    }
+    private void OnDisable()
+    {
+        MtouchControl.InputController.touchControl.performed -= Movement;
+        MtouchControl.Disable();
+    }
+
     private void Awake()
     {
         MtouchControl = new Inputcontroller();
@@ -21,30 +34,32 @@ public class BuildingController : MonoBehaviour
     void Update()
     {
 
-        
+        this.mTouchDelta = MtouchControl.InputController.touchControl.ReadValue<float>();
 
-
+       // m_Input.m_Player.move.ReadValue<Vector2>();
     }
 
     private void FixedUpdate()
     {
-        Movement();
+      //  Movement();
 
-       this.mTouchDelta = MtouchControl.InputController.touchControl.ReadValue<float>();
-      //  MtouchControl.InputController.touchControl.t
-
+       
+        //  MtouchControl.InputController.touchControl.t
+       
 
 
     }
 
 
-    public void Movement()
+    public void Movement(InputAction.CallbackContext context)
     {
 
-        Debug.Log(this.mTouchDelta);
+        Debug.Log(context);
 
-
-
+        //  Debug.Log(this.mTouchDelta);
+        //m_Input.m_Player.move.performed -= setAxis;
+        //InputAction.CallbackContext context
+       
 
 
     }

@@ -41,7 +41,7 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4c91ca9e-626f-4f7e-b5e0-0a41ac96f51f"",
-                    ""path"": ""<Touchscreen>/touch0/delta"",
+                    ""path"": ""<Touchscreen>/touch0/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -52,7 +52,7 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""402d2f52-ac84-4053-a34d-aecaa012912e"",
-                    ""path"": ""<Touchscreen>/touch1/delta"",
+                    ""path"": ""<Touchscreen>/touch1/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
