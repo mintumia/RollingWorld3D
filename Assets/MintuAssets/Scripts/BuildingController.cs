@@ -1,67 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System;
+
 
 public class BuildingController : MonoBehaviour
 {
-    Inputcontroller MtouchControl;
-    public float mTouchDelta;
-    // Start is called before the first frame update
+
 
     private void OnEnable()
     {
-        MtouchControl.Enable();
-        MtouchControl.InputController.touchControl.performed += Movement;
 
+      //  M_EventManager.mintuEvent2 += test;
     }
     private void OnDisable()
     {
-        MtouchControl.InputController.touchControl.performed -= Movement;
-        MtouchControl.Disable();
+       // M_EventManager.mintuEvent2 -= test;
+      
+
     }
 
-    private void Awake()
-    {
-        MtouchControl = new Inputcontroller();
-    }
-    void Start()
+    private void Start()
     {
         
+       
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        
 
-        this.mTouchDelta = MtouchControl.InputController.touchControl.ReadValue<float>();
 
-       // m_Input.m_Player.move.ReadValue<Vector2>();
+
     }
 
     private void FixedUpdate()
     {
-      //  Movement();
+        
 
-       
-        //  MtouchControl.InputController.touchControl.t
-       
 
 
     }
 
-
-    public void Movement(InputAction.CallbackContext context)
+   public void test(Vector2 _vecValue)
     {
 
-        Debug.Log(context);
 
-        //  Debug.Log(this.mTouchDelta);
-        //m_Input.m_Player.move.performed -= setAxis;
-        //InputAction.CallbackContext context
-       
-
-
+        Debug.Log("Test working : " + _vecValue);
     }
 
 

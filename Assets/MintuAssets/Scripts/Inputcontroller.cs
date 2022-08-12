@@ -28,9 +28,18 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
             ""id"": ""e0abeaef-25fa-4d87-b5e2-2ed08270ff3a"",
             ""actions"": [
                 {
-                    ""name"": ""touchControl"",
+                    ""name"": ""m_pad"",
                     ""type"": ""Value"",
-                    ""id"": ""61ee14d1-0dc7-42fc-b615-36fcdb144031"",
+                    ""id"": ""1570f03c-bbe0-4ca2-8ec9-fbafb9c1bbf1"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""movement"",
+                    ""type"": ""Value"",
+                    ""id"": ""1dc319f1-0d09-47a1-90d3-2b427ab468f6"",
                     ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -40,45 +49,23 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""4c91ca9e-626f-4f7e-b5e0-0a41ac96f51f"",
-                    ""path"": ""<Touchscreen>/touch0/position"",
+                    ""id"": ""d54b33da-6f70-4fa7-aa05-49d8eae847b9"",
+                    ""path"": ""<Joystick>/stick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""touchControl"",
+                    ""action"": ""m_pad"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""402d2f52-ac84-4053-a34d-aecaa012912e"",
-                    ""path"": ""<Touchscreen>/touch1/position"",
+                    ""id"": ""3697f35a-6dd8-45a0-884f-f4f9be36f064"",
+                    ""path"": ""<Touchscreen>/position"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""touchControl"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ae203b16-542b-4816-b486-e7456850c63c"",
-                    ""path"": ""<Touchscreen>/touch0/startPosition"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""touchControl"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""78d78af3-8e00-4246-8aa2-5b9a6f2bbc1f"",
-                    ""path"": ""<Touchscreen>/touch1/startPosition"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""touchControl"",
+                    ""action"": ""movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -89,7 +76,8 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
 }");
         // InputController
         m_InputController = asset.FindActionMap("InputController", throwIfNotFound: true);
-        m_InputController_touchControl = m_InputController.FindAction("touchControl", throwIfNotFound: true);
+        m_InputController_m_pad = m_InputController.FindAction("m_pad", throwIfNotFound: true);
+        m_InputController_movement = m_InputController.FindAction("movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -149,12 +137,14 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
     // InputController
     private readonly InputActionMap m_InputController;
     private IInputControllerActions m_InputControllerActionsCallbackInterface;
-    private readonly InputAction m_InputController_touchControl;
+    private readonly InputAction m_InputController_m_pad;
+    private readonly InputAction m_InputController_movement;
     public struct InputControllerActions
     {
         private @Inputcontroller m_Wrapper;
         public InputControllerActions(@Inputcontroller wrapper) { m_Wrapper = wrapper; }
-        public InputAction @touchControl => m_Wrapper.m_InputController_touchControl;
+        public InputAction @m_pad => m_Wrapper.m_InputController_m_pad;
+        public InputAction @movement => m_Wrapper.m_InputController_movement;
         public InputActionMap Get() { return m_Wrapper.m_InputController; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -164,22 +154,29 @@ public partial class @Inputcontroller : IInputActionCollection2, IDisposable
         {
             if (m_Wrapper.m_InputControllerActionsCallbackInterface != null)
             {
-                @touchControl.started -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnTouchControl;
-                @touchControl.performed -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnTouchControl;
-                @touchControl.canceled -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnTouchControl;
+                @m_pad.started -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnM_pad;
+                @m_pad.performed -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnM_pad;
+                @m_pad.canceled -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnM_pad;
+                @movement.started -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnMovement;
+                @movement.performed -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnMovement;
+                @movement.canceled -= m_Wrapper.m_InputControllerActionsCallbackInterface.OnMovement;
             }
             m_Wrapper.m_InputControllerActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @touchControl.started += instance.OnTouchControl;
-                @touchControl.performed += instance.OnTouchControl;
-                @touchControl.canceled += instance.OnTouchControl;
+                @m_pad.started += instance.OnM_pad;
+                @m_pad.performed += instance.OnM_pad;
+                @m_pad.canceled += instance.OnM_pad;
+                @movement.started += instance.OnMovement;
+                @movement.performed += instance.OnMovement;
+                @movement.canceled += instance.OnMovement;
             }
         }
     }
     public InputControllerActions @InputController => new InputControllerActions(this);
     public interface IInputControllerActions
     {
-        void OnTouchControl(InputAction.CallbackContext context);
+        void OnM_pad(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
 }

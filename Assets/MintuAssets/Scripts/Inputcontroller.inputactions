@@ -6,9 +6,18 @@
             "id": "e0abeaef-25fa-4d87-b5e2-2ed08270ff3a",
             "actions": [
                 {
-                    "name": "touchControl",
+                    "name": "m_pad",
                     "type": "Value",
-                    "id": "61ee14d1-0dc7-42fc-b615-36fcdb144031",
+                    "id": "1570f03c-bbe0-4ca2-8ec9-fbafb9c1bbf1",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "movement",
+                    "type": "Value",
+                    "id": "1dc319f1-0d09-47a1-90d3-2b427ab468f6",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
@@ -18,45 +27,23 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "4c91ca9e-626f-4f7e-b5e0-0a41ac96f51f",
-                    "path": "<Touchscreen>/touch0/position",
+                    "id": "d54b33da-6f70-4fa7-aa05-49d8eae847b9",
+                    "path": "<Joystick>/stick",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "touchControl",
+                    "action": "m_pad",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "402d2f52-ac84-4053-a34d-aecaa012912e",
-                    "path": "<Touchscreen>/touch1/position",
+                    "id": "3697f35a-6dd8-45a0-884f-f4f9be36f064",
+                    "path": "<Touchscreen>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "touchControl",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ae203b16-542b-4816-b486-e7456850c63c",
-                    "path": "<Touchscreen>/touch0/startPosition",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "touchControl",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "78d78af3-8e00-4246-8aa2-5b9a6f2bbc1f",
-                    "path": "<Touchscreen>/touch1/startPosition",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "touchControl",
+                    "action": "movement",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
