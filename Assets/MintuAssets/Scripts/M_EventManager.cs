@@ -11,7 +11,10 @@ public class M_EventManager : MonoBehaviour
     public static event Action mintuEvent;
     public static event Action <Vector2> mintuEvent2;
     public Inputcontroller mController;
-   
+    public static Vector2 mrotateAngle;
+    private bool changing = false;
+    private float waitSecond = 1;
+
 
     //  public int repeat = 1;
 
@@ -29,9 +32,14 @@ public class M_EventManager : MonoBehaviour
         mController.Enable();
 
         mController.InputController.m_pad.performed += Movement;
-        mController.InputController.movement.performed += Movement_touch;
+       // mController.InputController.movement.performed += Movement2;
 
-
+        mController.InputController.wsad.performed += Movement2;
+        mController.InputController.wsad.canceled += CancelMovement;
+        mController.InputController.Movement.performed += Movement2;
+        mController.InputController.Movement.canceled += CancelMovement;
+        mController.InputController.M_key.performed += Movement2;
+        mController.InputController.M_key.canceled += CancelMovement;
 
 
     }
@@ -40,7 +48,13 @@ public class M_EventManager : MonoBehaviour
     {
 
         mController.InputController.m_pad.performed -= Movement;
-        mController.InputController.movement.performed -= Movement_touch;
+       // mController.InputController.movement.performed -= Movement2;
+        mController.InputController.wsad.performed -= Movement2;
+        mController.InputController.wsad.canceled -= CancelMovement;
+        mController.InputController.Movement.performed -= Movement2;
+        mController.InputController.Movement.canceled -= CancelMovement;
+        mController.InputController.M_key.performed -= Movement2;
+        mController.InputController.M_key.canceled -= CancelMovement;
         mController?.Disable();
     }
 
@@ -53,6 +67,23 @@ public class M_EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+/*
+        if(changing == true)
+        {
+            waitSecond -= Time.deltaTime;
+
+
+            if (waitSecond < 0) 
+            {
+                waitSecond = 1;
+                mrotateAngle = Vector2.zero;
+                changing = false;
+
+            }
+
+
+        }*/
+
 
         /*if (Input.GetMouseButton(0))
         {
@@ -109,18 +140,29 @@ public class M_EventManager : MonoBehaviour
 
     }
 
-    public void Movement_touch(InputAction.CallbackContext context)
+    public void Movement2(InputAction.CallbackContext context)
     {
-        context.ReadValue<Vector2>();
 
-       // Debug.Log("Joy: x:  " + context.ReadValue<Vector2>().x + " , Y : "+context.ReadValue<Vector2>().y);
+        mrotateAngle = context.ReadValue<Vector2>();
+        changing = true;
 
 
-      
+     // Debug.Log("Joy: x:  " + context.ReadValue<Vector2>().x + " , Y : "+context.ReadValue<Vector2>().y);
+
+
+
 
 
     }
 
+    void CancelMovement(InputAction.CallbackContext context)
+    {
+
+        mrotateAngle = Vector2.zero;
+
+
+    }
+   
 
 
 }
