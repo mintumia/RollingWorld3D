@@ -51,7 +51,7 @@ public class BuildingController : MonoBehaviour
     {
 
 
-        Debug.Log("Test working : " + _vecValue);
+     //   Debug.Log("Test working : " + _vecValue);
     }
 
 

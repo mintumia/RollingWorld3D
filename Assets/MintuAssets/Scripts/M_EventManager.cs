@@ -8,8 +8,14 @@ using UnityEngine.InputSystem;
 
 public class M_EventManager : MonoBehaviour
 {
+
+    /********Ruff Start******************/
     public static event Action mintuEvent;
     public static event Action <Vector2> mintuEvent2;
+    public static event Action<bool> mintuEvent3;
+
+    /********Ruff End******************/
+
     public Inputcontroller mController;
     public static Vector2 mrotateAngle;
     private bool changing = false;
@@ -67,6 +73,8 @@ public class M_EventManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+      //  mintuEvent?.Invoke();
+
 /*
         if(changing == true)
         {
